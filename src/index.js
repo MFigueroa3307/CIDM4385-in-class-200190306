@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import 'popper.js/dist/popper.js';
 import 'jquery/dist/jquery.js'
 import './index.css';
