@@ -10,18 +10,18 @@ class LoginForm extends Component {
 
         this.state = {
             email: '',
-            password: '',
             results: '',
         }
 
         this.onEmailChange = this.onEmailChange.bind(this);
-        this.onPasswordChange = this.onPasswordChange.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
 
     }
 
     //handler for data from child component
     onEmailChange(email){
         
+        console.log("From the child: " + email);
 
         this.setState( () => {
                 return {
@@ -30,20 +30,26 @@ class LoginForm extends Component {
             }
         );
 
+        console.log("From the parent state: " + this.state.email);
     }
 
-    onPasswordChange(password){
-    
+    onFormSubmit(event){
+
+        event.preventDefault();
+
+        const results = "Email address is: " + this.state.email;
+
         this.setState( () => {
                 return {
-                    password
+                    results
                 };
             }
         );
+
+        //this is also lifting state to the parent
+        this.props.onFormSubmit(results);
+
     }
-
-    
-
 
     render() {
         return (
@@ -51,7 +57,7 @@ class LoginForm extends Component {
                 <h1>{this.props.title}</h1>
                 <form onSubmit={this.onFormSubmit}>
                     <EmailInput onEmailInputChange={this.onEmailChange} />
-                    <PasswordInput onPasswordChange={this.onPasswordChange} />
+                    <PasswordInput />
                     <button type="submit" 
                             className="btn btn-primary">Submit</button>
                 </form>
